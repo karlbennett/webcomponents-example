@@ -14,7 +14,7 @@ public class Freemarker {
     private final Configuration configuration;
 
     public Freemarker() {
-        this("2.3.29");
+        this("2.3.28");
     }
 
     public Freemarker(String version) {

@@ -40,7 +40,7 @@ public class FreemarkerTest {
     @Test
     public void Instantiation_for_coverage() {
         new Freemarker();
-        new Freemarker("2.3.29");
+        new Freemarker("2.3.28");
     }
 
     @Test
