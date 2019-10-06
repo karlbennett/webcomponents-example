@@ -1,19 +1,16 @@
 package examples.webcomponents.render;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.List;
 
 import static examples.webcomponents.render.IO.toAbsolutePath;
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
-public class ITFiles {
+public class FilesTest {
 
     private Files files;
 
