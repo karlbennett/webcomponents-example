@@ -1,0 +1,27 @@
+# Intellij
+.idea
+*.iml
+
+# Maven
+target
+
+# Spring Boot
+application-local*.properties
+
+# Java Script
+node
+node_modules
+yarn-error.log
+
+# Vim
+*.swp
+
+# Scratch Files
+test*.json
+test*.xml
+test*.txt
+test*.html
+temp*.json
+temp*.xml
+temp*.txt
+temp*.html

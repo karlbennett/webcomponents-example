@@ -1,0 +1,1 @@
+A loop: <#list 1..5 as x>${x}<#sep>, </#list>. <#include "partials/partial-01.ftl">

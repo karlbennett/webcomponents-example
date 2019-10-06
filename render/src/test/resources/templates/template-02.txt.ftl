@@ -1,0 +1,1 @@
+A conditional: <#if 1 == 2>true<#else>false</#if>. <#include "partials/partial-01.ftl">

@@ -1,0 +1,77 @@
+package examples.webcomponents.render;
+
+import org.assertj.core.api.Assertions;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.io.IOException;
+
+import static examples.webcomponents.render.IO.toAbsolutePath;
+import static java.lang.String.format;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.junit.Assert.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
+import static shiver.me.timbers.data.random.RandomStrings.someAlphaString;
+import static shiver.me.timbers.data.random.RandomStrings.someString;
+
+public class FileTest {
+
+    private String name;
+    private String path;
+    private String directory;
+    private String content;
+    private File file;
+
+    @Before
+    public void setUp() {
+        name = someString();
+        path = toAbsolutePath("files/file-01.txt");
+        directory = toAbsolutePath("files");
+        content = someString();
+        file = new File(name, path, directory, content);
+    }
+
+    @Test
+    public void Can_compare_an_abstract_file() {
+
+        final File otherFile = mock(File.class);
+
+        final String otherName = someString();
+
+        // Given
+        given(otherFile.getName()).willReturn(otherName);
+
+        // When
+        final int actual = file.compareTo(otherFile);
+
+        // Then
+        assertThat(actual, equalTo(name.compareTo(otherName)));
+    }
+
+    @Test
+    public void Can_write_an_abstract_file() {
+
+        // Given
+        final String filePath = format("%s/file-%s.txt", toAbsolutePath(""), someAlphaString(5));
+
+        // When
+        file.writeTo(filePath);
+
+        // Then
+        assertThat(IO.toString(filePath), equalTo(content));
+    }
+
+    @Test
+    public void Can_fail_write_an_abstract_file() {
+
+        // When
+        final IllegalStateException actual = Assertions.catchThrowableOfType(
+            () -> file.writeTo(toAbsolutePath("") + "/this/does/not/exist"), IllegalStateException.class
+        );
+
+        // Then
+        assertThat(actual.getCause(), instanceOf(IOException.class));
+    }
+}
