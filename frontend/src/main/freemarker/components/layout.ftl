@@ -1,3 +1,4 @@
+<#import "webcomponents.ftl" as w>
 <#macro layout title heading>
     <!DOCTYPE html>
     <html lang="en">
@@ -5,13 +6,17 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="/css/all.css">
 
+        <script src="/scripts/config.js"></script>
+        <script src="/scripts/tools.js"></script>
+        <@w.import path="/components/login-name.js" />
+
         <title>${title}</title>
     </head>
     <body>
     <div class="header-container">
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/login.html">Login</a></li>
+            <li><login-name></login-name></li>
         </ul>
     </div>
 
