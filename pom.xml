@@ -106,6 +106,7 @@
     </dependencies>
 
     <modules>
+        <module>backend</module>
         <module>components</module>
         <module>render</module>
         <module>frontend</module>
