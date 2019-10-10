@@ -40,10 +40,10 @@ public class AddressesControllerTest {
         given(authentication.isAuthenticated()).willReturn(true);
 
         // When
-        final ModelAndView actual = controller.menuItem(authentication);
+        final ModelAndView actual = controller.link(authentication);
 
         // Then
-        assertThat(actual.getViewName(), equalTo("addresses-item"));
+        assertThat(actual.getViewName(), equalTo("addresses-link"));
         assertThat(actual.getModel(), hasEntry("loggedIn", true));
     }
 
@@ -51,10 +51,10 @@ public class AddressesControllerTest {
     public void Cannot_render_a_addresses_menu_item() {
 
         // When
-        final ModelAndView actual = controller.menuItem(null);
+        final ModelAndView actual = controller.link(null);
 
         // Then
-        assertThat(actual.getViewName(), equalTo("addresses-item"));
+        assertThat(actual.getViewName(), equalTo("addresses-link"));
         assertThat(actual.getModel(), equalTo(emptyMap()));
     }
 

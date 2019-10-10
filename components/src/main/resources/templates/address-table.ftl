@@ -1,8 +1,12 @@
 <#import "webcomponent.ftl" as web>
 <@web.component name="address-table">
-    <p>
+    <p class="address-table__current-page">
         <span>Current Page: </span><span>${addressPage.number}</span>
+    </p>
+    <p class="address-table__total-pages">
         <span>Total Pages: </span><span>${addressPage.totalPages}</span>
+    </p>
+    <p class="address-table__total-addresses">
         <span>Total Addresses: </span><span>${addressPage.totalElements}</span>
     </p>
     <table class="address-table">
@@ -35,6 +39,10 @@
             </tr>
         </#list>
     </table>
-    <div><a href="?page=${(addressPage.number > 1)?then(addressPage.number - 1, 1)}">Previous</a></div>
-    <div><a href="?page=${addressPage.number + 1}">Next</a></div>
+    <div class="address-table__previous">
+        <a href="?page=${(addressPage.number > 1)?then(addressPage.number - 1, 1)}">Previous</a>
+    </div>
+    <div class="address-table__next">
+        <a href="?page=${addressPage.number + 1}">Next</a>
+    </div>
 </@web.component>

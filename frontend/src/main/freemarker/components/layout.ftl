@@ -8,7 +8,7 @@
 
         <script src="/scripts/config.js"></script>
         <script src="/scripts/tools.js"></script>
-        <@w.import path="/components/public/addresses-item.js" />
+        <@w.import path="/components/public/addresses-link.js" />
         <@w.import path="/components/public/login-name.js" />
 
         <title>${title}</title>
@@ -17,7 +17,7 @@
     <div class="header-container">
         <ul>
             <li><a href="/">Home</a></li>
-            <li><addresses-item></addresses-item></li>
+            <li><addresses-link></addresses-link></li>
             <li><login-name></login-name></li>
         </ul>
     </div>

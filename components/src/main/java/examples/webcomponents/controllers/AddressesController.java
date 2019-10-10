@@ -16,7 +16,7 @@ import static java.util.Collections.singletonMap;
 @Controller
 public class AddressesController {
 
-    private static final String ADDRESSES_ITEM_VIEW = "addresses-item";
+    private static final String ADDRESSES_LINK_VIEW = "addresses-link";
     private static final String ADDRESSES_VIEW = "address-table";
 
     private final AddressesRepository repository;
@@ -27,12 +27,12 @@ public class AddressesController {
         this.mapper = mapper;
     }
 
-    @RequestMapping(path = "/components/public/addresses-item.js")
-    public ModelAndView menuItem(Authentication authentication) {
+    @RequestMapping(path = "/components/public/addresses-link.js")
+    public ModelAndView link(Authentication authentication) {
         if (authentication == null) {
-            return new ModelAndView(ADDRESSES_ITEM_VIEW);
+            return new ModelAndView(ADDRESSES_LINK_VIEW);
         }
-        return new ModelAndView(ADDRESSES_ITEM_VIEW, singletonMap("loggedIn", authentication.isAuthenticated()));
+        return new ModelAndView(ADDRESSES_LINK_VIEW, singletonMap("loggedIn", authentication.isAuthenticated()));
     }
 
     @RequestMapping(path = "/components/address-table.js")
