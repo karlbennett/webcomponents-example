@@ -1,5 +1,6 @@
 package examples.webcomponents.controllers;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +15,13 @@ import static shiver.me.timbers.data.random.RandomStrings.someString;
 
 public class LoginUsernameControllerTest {
 
+    private LoginUsernameController controller;
+
+    @Before
+    public void setUp() {
+        controller = new LoginUsernameController();
+    }
+
     @Test
     public void Can_render_a_login_user_name() {
 
@@ -25,7 +33,7 @@ public class LoginUsernameControllerTest {
         given(authentication.getName()).willReturn(username);
 
         // When
-        final ModelAndView actual = new LoginUsernameController().username(authentication);
+        final ModelAndView actual = controller.username(authentication);
 
         // Then
         assertThat(actual.getViewName(), equalTo("login-name"));
@@ -36,7 +44,7 @@ public class LoginUsernameControllerTest {
     public void Cannot_render_a_login_user_name() {
 
         // When
-        final ModelAndView actual = new LoginUsernameController().username(null);
+        final ModelAndView actual = controller.username(null);
 
         // Then
         assertThat(actual.getViewName(), equalTo("login-name"));

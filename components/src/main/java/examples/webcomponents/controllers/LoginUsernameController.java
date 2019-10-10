@@ -12,7 +12,7 @@ public class LoginUsernameController {
 
     private static final String LOGIN_NAME_VIEW = "login-name";
 
-    @RequestMapping(path = "/components/login-name.js", produces = "application/javascript")
+    @RequestMapping(path = "/components/public/login-name.js")
     public ModelAndView username(Authentication authentication) {
         if (authentication == null) {
             return new ModelAndView(LOGIN_NAME_VIEW);

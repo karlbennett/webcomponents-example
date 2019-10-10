@@ -20,6 +20,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <jacoco.exclude>**/*Application.*,**/*Configuration.*</jacoco.exclude>
     </properties>
 
     <build>
@@ -32,7 +33,7 @@
                 <version>0.8.1</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/*Application.*,**/*Configuration.*</exclude>
+                        <exclude>${jacoco.exclude}</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -106,6 +107,12 @@
             <groupId>nl.jqno.equalsverifier</groupId>
             <artifactId>equalsverifier</artifactId>
             <version>2.3.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.bean-matchers</groupId>
+            <artifactId>bean-matchers</artifactId>
+            <version>0.11</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
