@@ -1,5 +1,6 @@
 <#import "webcomponent.ftl" as web>
 <@web.component name="address-table">
+    <link rel="stylesheet" type="text/css" href="/css/address.css">
     <p class="address-table__current-page">
         <span>Current Page: </span><span>${addressPage.number}</span>
     </p>

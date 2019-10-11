@@ -14,3 +14,27 @@ body {
   max-width: 940px;
   margin: 0 auto;
 }
+
+a {
+  text-decoration: none;
+
+  &:link {
+    color: inherit;
+  }
+
+  &:focus {
+    color: inherit;
+  }
+
+  &:hover {
+    color: inherit;
+  }
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:active {
+    color: inherit;
+  }
+}

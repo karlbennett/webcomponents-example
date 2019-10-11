@@ -1,5 +1,17 @@
 .main-menu {
   margin: 0;
+  padding: 16px;
+  list-style: none;
+  border-bottom: 1px solid black;
+
+  &__item {
+    display: inline;
+    padding: 0 16px 0 0;
+
+    &__login {
+      float: right;
+    }
+  }
 }
 
 .content-container {

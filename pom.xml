@@ -83,6 +83,75 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
             </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.1.1</version>
+                    <executions>
+                        <execution>
+                            <id>unpack</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>unpack</goal>
+                            </goals>
+                            <configuration>
+                                <artifactItems>
+                                    <artifactItem>
+                                        <groupId>examples</groupId>
+                                        <artifactId>styles</artifactId>
+                                        <version>1.0-SNAPSHOT</version>
+                                        <type>jar</type>
+                                        <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+                                    </artifactItem>
+                                </artifactItems>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>examples</groupId>
+                            <artifactId>styles</artifactId>
+                            <version>1.0-SNAPSHOT</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>nl.geodienstencentrum.maven</groupId>
+                    <artifactId>sass-maven-plugin</artifactId>
+                    <version>3.7.2</version>
+                    <configuration>
+                        <resources>
+                            <resource>
+                                <source>
+                                    <directory>${project.basedir}/src/main/sass</directory>
+                                </source>
+                                <destination>${project.build.outputDirectory}/static/css</destination>
+                            </resource>
+                            <resource>
+                                <source>
+                                    <directory>${project.build.directory}/generated-sources/sass</directory>
+                                </source>
+                                <destination>${project.build.outputDirectory}/static/css</destination>
+                            </resource>
+                        </resources>
+                        <sassOptions>
+                            <sourcemap>:none</sourcemap>
+                            <style>:compressed</style>
+                        </sassOptions>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>update-stylesheets</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <dependencies>
@@ -119,6 +188,7 @@
 
     <modules>
         <module>backend</module>
+        <module>styles</module>
         <module>components</module>
         <module>render</module>
         <module>frontend</module>
