@@ -17,6 +17,26 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>nl.geodienstencentrum.maven</groupId>
+                <artifactId>sass-maven-plugin</artifactId>
+                <version>3.7.2</version>
+                <configuration>
+                    <destination>${project.build.outputDirectory}/static/css</destination>
+                    <sassOptions>
+                        <sourcemap>:none</sourcemap>
+                        <style>:compressed</style>
+                    </sassOptions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>update-stylesheets</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.6.0</version>
