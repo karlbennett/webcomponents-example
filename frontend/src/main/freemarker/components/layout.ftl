@@ -6,10 +6,10 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="/css/all.css">
 
-        <script src="/scripts/config.js"></script>
+        <script src="/scripts/webcomponents-loader.js"></script>
         <script src="/scripts/tools.js"></script>
-        <@w.import path="/components/public/addresses-link.js" />
-        <@w.import path="/components/public/login-name.js" />
+        <@w.import url="/components/public/addresses-link.js" />
+        <@w.import url="/components/public/login-name.js" />
 
         <title>${title}</title>
     </head>
@@ -17,7 +17,7 @@
     <div class="header-container">
         <ul class="main-menu">
             <li class="main-menu__item"><a href="/">Home</a></li>
-            <li class="main-menu__item--last"><addresses-link>Addresses</addresses-link></li>
+            <li class="main-menu__item--last"><addresses-link></addresses-link></li>
             <li class="main-menu__item__login"><login-name></login-name></li>
         </ul>
     </div>
