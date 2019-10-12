@@ -1,8 +1,10 @@
 package examples.webcomponents.render;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
+import java.nio.file.Files;
 
 public class File implements Comparable<File> {
 
@@ -41,7 +43,9 @@ public class File implements Comparable<File> {
 
     public void writeTo(String path) {
         try {
-            java.nio.file.Files.write(Paths.get(path), content.getBytes());
+            final Path _path = Paths.get(path);
+            Files.createDirectories(_path.getParent());
+            Files.write(_path, content.getBytes());
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }

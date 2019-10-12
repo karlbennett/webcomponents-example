@@ -28,6 +28,7 @@ public class Freemarker {
     public File render(File file) {
         try {
             configuration.setDirectoryForTemplateLoading(new java.io.File(file.getDirectory()));
+            configuration.setWhitespaceStripping(true);
             final Template template = configuration.getTemplate(file.getName());
             final ByteArrayOutputStream out = new ByteArrayOutputStream();
             template.process(null, new OutputStreamWriter(out));

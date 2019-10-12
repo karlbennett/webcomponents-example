@@ -27,7 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authenticated()
             .and()
             .formLogin().loginPage("/login.html").permitAll()
-            .and().logout().permitAll();
+            .and().logout().logoutSuccessUrl("/").permitAll();
     }
 
     @Bean

@@ -7,9 +7,7 @@
             }
 
             connectedCallback() {
-            this.shadow.innerHTML = `
-                <#nested>
-            `;
+            this.shadow.innerHTML = `<#nested>`;
             }
         }
         customElements.define('${name}', Component);

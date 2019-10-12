@@ -17,6 +17,8 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static shiver.me.timbers.data.random.RandomStrings.someAlphaString;
 import static shiver.me.timbers.data.random.RandomStrings.someString;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class FileTest {
 
@@ -55,7 +57,7 @@ public class FileTest {
     }
 
     @Test
-    public void Can_compare_an_abstract_file() {
+    public void Can_compare_a_file() {
 
         final File otherFile = mock(File.class);
 
@@ -72,7 +74,7 @@ public class FileTest {
     }
 
     @Test
-    public void Can_write_an_abstract_file() {
+    public void Can_write_a_file() {
 
         // Given
         final String filePath = format("%s/file-%s.txt", toAbsolutePath(""), someAlphaString(5));
@@ -85,11 +87,31 @@ public class FileTest {
     }
 
     @Test
-    public void Can_fail_write_an_abstract_file() {
+    public void Can_write_a_file_a_directory_that_does_not_exist() {
+
+        // Given
+        final String filePath = format(
+            "%s/file-%s.txt", toAbsolutePath("") + "/this/does/not/exist/yet", someAlphaString(5)
+        );
+
+        // When
+        file.writeTo(filePath);
+
+        // Then
+        assertThat(IO.toString(filePath), equalTo(content));
+    }
+
+    @Test
+    public void Can_fail_write_a_file() throws IOException {
+
+        final String path = toAbsolutePath("") + "/this/is/a/directory";
+
+        // Given
+        Files.createDirectories(Paths.get(path));
 
         // When
         final IllegalStateException actual = Assertions.catchThrowableOfType(
-            () -> file.writeTo(toAbsolutePath("") + "/this/does/not/exist"), IllegalStateException.class
+            () -> file.writeTo(path), IllegalStateException.class
         );
 
         // Then

@@ -17,10 +17,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <groupId>nl.geodienstencentrum.maven</groupId>
                 <artifactId>sass-maven-plugin</artifactId>
             </plugin>
@@ -32,7 +28,7 @@
                     <mainClass>examples.webcomponents.render.FreemarkerRender</mainClass>
                     <arguments>
                         <argument>${project.basedir}/src/main/freemarker</argument>
-                        <argument>${project.build.outputDirectory}/static</argument>
+                        <argument>${project.build.generateSourcesDirectory}/html</argument>
                     </arguments>
                 </configuration>
                 <executions>
@@ -40,6 +36,26 @@
                         <phase>compile</phase>
                         <goals>
                             <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.hazendaz.maven</groupId>
+                <artifactId>htmlcompressor-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <configuration>
+                    <srcFolder>${project.build.generateSourcesDirectory}/html</srcFolder>
+                    <targetFolder>${project.build.staticDirectory}</targetFolder>
+                    <javascriptHtmlSprite>false</javascriptHtmlSprite>
+                    <compressJavaScript>true</compressJavaScript>
+                    <removeIntertagSpaces>true</removeIntertagSpaces>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>html</goal>
                         </goals>
                     </execution>
                 </executions>

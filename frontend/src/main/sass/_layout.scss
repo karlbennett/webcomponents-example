@@ -1,15 +1,28 @@
 .main-menu {
   margin: 0;
-  padding: 16px;
+  padding: 16px 8px;
   list-style: none;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
 
   &__item {
     display: inline;
-    padding: 0 16px 0 0;
+    padding: 0 8px;
+    border-right: 1px solid black;
+
+    &--last {
+      @extend .main-menu__item;
+      border: none;
+    }
 
     &__login {
+      text-align: right;
+      border: none;
       float: right;
+
+      &__placeholder {
+        padding-right: 8px;
+        border-right: 1px solid white;
+      }
     }
   }
 }
