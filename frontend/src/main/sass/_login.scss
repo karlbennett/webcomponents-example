@@ -1,0 +1,32 @@
+.login-form {
+  margin: 0 auto;
+  width: 295px;
+}
+
+.login-form__field {
+  padding: 8px 0;
+}
+
+.login-form__field__label {
+  display: inline-block;
+  width: 100px;
+}
+
+.login-form__field__input {
+  padding: 8px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.login-form__submit {
+  display: block;
+  float: right;
+  background: none;
+  color: inherit;
+  padding: 8px;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  border: 1px solid black;
+}
