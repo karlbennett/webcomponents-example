@@ -59,17 +59,7 @@
             padding: 8px;
         }
     </style>
-    <div class="address-table__nav">
-        <span class="address-table__page">
-            Page: ${addressPage.number}
-        </span>
-        <a class="address-table__next" href="?page=${addressPage.number + 1}"></a>
-        <a class="address-table__previous" href="?page=${(addressPage.number > 1)?then(addressPage.number - 1, 1)}"></a>
-        <span class="address-table__position">
-            ${1 + ((addressPage.number - 1) * addressPage.size)}-${(addressPage.number) * addressPage.size} of
-            ${addressPage.totalElements}
-        </span>
-    </div>
+    <@nav />
     <table class="address-table">
         <tr class="address-table__heading">
             <th class="address-table__cell">Street</th>
@@ -100,4 +90,22 @@
             </tr>
         </#list>
     </table>
+    <@nav />
 </@web.component>
+
+<#macro nav>
+    <#assign previousPage = (addressPage.number > 1)?then(addressPage.number - 1, 1)>
+    <#assign currentPage = addressPage.number>
+    <#assign nextPage = (addressPage.number + 1)>
+    <#assign totalPages = addressPage.totalPages>
+    <#assign size = addressPage.size>
+    <#assign firstRow = (1 + ((addressPage.number - 1) * addressPage.size))>
+    <#assign lastRow = ((addressPage.number) * addressPage.size)>
+    <#assign totalRows = addressPage.totalElements>
+    <div class="address-table__nav">
+        <span class="address-table__page">Page: ${currentPage} of ${totalPages}</span>
+        <a class="address-table__next" href="?page=${nextPage}&size=${size}"></a>
+        <a class="address-table__previous" href="?page=${previousPage}&size=${size}"></a>
+        <span class="address-table__position">${firstRow}-${lastRow} of${totalRows}</span>
+    </div>
+</#macro>
