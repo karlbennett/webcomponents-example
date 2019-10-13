@@ -8,9 +8,10 @@
         <link rel="stylesheet" type="text/css" href="/css/all.css">
 
         <script src="/scripts/webcomponents-loader.js"></script>
+        <script src="/scripts/env.js"></script>
         <script src="/scripts/tools.js"></script>
-        <@w.import url="/components/public/addresses-link.js" />
-        <@w.import url="/components/public/login-name.js" />
+        <@w.import path="/components/public/addresses-link.js" />
+        <@w.import path="/components/public/login-name.js" />
 
         <title>${title}</title>
     </head>
