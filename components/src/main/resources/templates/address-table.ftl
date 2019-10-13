@@ -1,6 +1,12 @@
 <#import "webcomponent.ftl" as web>
+<#import "drop-down.ftl" as drop>
 <@web.component name="address-table">
+    <#include "link-style.ftl">
     <style>
+        p {
+            margin: 0;
+        }
+
         .address-table__nav {
             overflow: hidden
         }
@@ -16,6 +22,17 @@
             font-size: 0.8em;
             padding: 8px;
             float: right;
+        }
+
+        .address-table__sizes {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .address-table__size__link {
+            display: block;
+            width: 100%;
         }
 
         .address-table__previous {
@@ -58,8 +75,12 @@
             width: 100px;
             padding: 8px;
         }
+
+        .dropdown__submenu {
+            width: 36px;
+        }
     </style>
-    <@nav />
+    <@nav id="address-top-nav" />
     <table class="address-table">
         <tr class="address-table__heading">
             <th class="address-table__cell">Street</th>
@@ -90,10 +111,10 @@
             </tr>
         </#list>
     </table>
-    <@nav />
+    <@nav id="address-bottom-nav"/>
 </@web.component>
 
-<#macro nav>
+<#macro nav id>
     <#assign previousPage = (addressPage.number > 1)?then(addressPage.number - 1, 1)>
     <#assign currentPage = addressPage.number>
     <#assign nextPage = (addressPage.number + 1)>
@@ -106,6 +127,21 @@
         <span class="address-table__page">Page: ${currentPage} of ${totalPages}</span>
         <a class="address-table__next" href="?page=${nextPage}&size=${size}"></a>
         <a class="address-table__previous" href="?page=${previousPage}&size=${size}"></a>
-        <span class="address-table__position">${firstRow}-${lastRow} of${totalRows}</span>
+        <span class="address-table__position">
+            <@drop.down id="${id}-dropdown" label="${firstRow}-${lastRow} of ${totalRows}">
+                <p>Rows:</p>
+                <ul class="address-table__sizes">
+                    <li class="address-table__size">
+                        <a class="address-table__size__link" href="?page=${currentPage}&size=10">10</a>
+                    </li>
+                    <li class="address-table__size">
+                        <a class="address-table__size__link" href="?page=${currentPage}&size=50">50</a>
+                    </li>
+                    <li class="address-table__size">
+                        <a class="address-table__size__link" href="?page=${currentPage}&size=100">100</a>
+                    </li>
+                </ul>
+            </@drop.down>
+        </span>
     </div>
 </#macro>
