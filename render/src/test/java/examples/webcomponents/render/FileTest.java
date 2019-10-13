@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static examples.webcomponents.render.IO.toAbsolutePath;
 import static java.lang.String.format;
@@ -17,8 +19,6 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static shiver.me.timbers.data.random.RandomStrings.someAlphaString;
 import static shiver.me.timbers.data.random.RandomStrings.someString;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class FileTest {
 

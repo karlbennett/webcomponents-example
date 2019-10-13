@@ -1,4 +1,4 @@
-<style>
+<style><#t>
     a {
         text-decoration: none;
     }
@@ -22,4 +22,4 @@
     a:active {
         color: inherit;
     }
-</style>
+</style><#t>

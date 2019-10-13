@@ -35,7 +35,11 @@ public class AddressesController {
         return new ModelAndView(ADDRESSES_LINK_VIEW, singletonMap("loggedIn", authentication.isAuthenticated()));
     }
 
-    @RequestMapping(path = "/components/address-table.js")
+    @RequestMapping(path = {
+        "/components/address-table",
+        "/components/address-table.js",
+        "/components/address-table.json"
+    })
     public ModelAndView addressTable(
         @RequestParam(defaultValue = "0") int page,
         @RequestParam(defaultValue = "10") int size
