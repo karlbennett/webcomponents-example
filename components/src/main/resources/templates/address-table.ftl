@@ -61,6 +61,7 @@
             font-size: 0.8em;
             border-collapse: collapse;
             text-align: center;
+            margin: 0 auto;
         }
 
         .address-table__heading {
@@ -76,38 +77,55 @@
             padding: 8px;
         }
 
-        .dropdown__submenu {
-            width: 36px;
+        @media only screen and (max-width: 768px) {
+            .beds {display: none;}
+            .baths {display: none;}
+            .sqr-feet {display: none;}
+            .type {display: none;}
+            .price {display: none;}
+            .lat {display: none;}
+            .long {display: none;}
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 992px) {
+            .baths {display: none;}
+            .type {display: none;}
+            .lat {display: none;}
+            .long {display: none;}
+        }
+
+        @media only screen and (min-width: 992px) {
+
         }
     </style>
     <@nav id="address-top-nav" />
     <table class="address-table">
         <tr class="address-table__heading">
-            <th class="address-table__cell">Street</th>
-            <th class="address-table__cell">City</th>
-            <th class="address-table__cell">Zip Code</th>
-            <th class="address-table__cell">State</th>
-            <th class="address-table__cell">Beds</th>
-            <th class="address-table__cell">Baths</th>
-            <th class="address-table__cell">Sqr Feet</th>
-            <th class="address-table__cell">Type</th>
-            <th class="address-table__cell">Price</th>
-            <th class="address-table__cell">Lat</th>
-            <th class="address-table__cell">Long</th>
+            <th class="address-table__cell street">Street</th>
+            <th class="address-table__cell city">City</th>
+            <th class="address-table__cell zip-code">Zip Code</th>
+            <th class="address-table__cell state">State</th>
+            <th class="address-table__cell beds">Beds</th>
+            <th class="address-table__cell baths">Baths</th>
+            <th class="address-table__cell sqr-feet">Sqr Feet</th>
+            <th class="address-table__cell type">Type</th>
+            <th class="address-table__cell price">Price</th>
+            <th class="address-table__cell lat">Lat</th>
+            <th class="address-table__cell long">Long</th>
         </tr>
         <#list addressPage.addresses as address>
             <tr class="address-table__row">
-                <td class="address-table__cell">${address.street}</td>
-                <td class="address-table__cell">${address.city}</td>
-                <td class="address-table__cell">${address.zip}</td>
-                <td class="address-table__cell">${address.state}</td>
-                <td class="address-table__cell">${address.beds}</td>
-                <td class="address-table__cell">${address.baths}</td>
-                <td class="address-table__cell">${address.squareFeet}</td>
-                <td class="address-table__cell">${address.type}</td>
-                <td class="address-table__cell">${address.price}</td>
-                <td class="address-table__cell">${address.latitude}</td>
-                <td class="address-table__cell">${address.longitude}</td>
+                <td class="address-table__cell street">${address.street}</td>
+                <td class="address-table__cell city">${address.city}</td>
+                <td class="address-table__cell zip-code">${address.zip}</td>
+                <td class="address-table__cell state">${address.state}</td>
+                <td class="address-table__cell beds">${address.beds}</td>
+                <td class="address-table__cell baths">${address.baths}</td>
+                <td class="address-table__cell sqr-feet">${address.squareFeet}</td>
+                <td class="address-table__cell type">${address.type}</td>
+                <td class="address-table__cell price">${address.price}</td>
+                <td class="address-table__cell lat">${address.latitude}</td>
+                <td class="address-table__cell long">${address.longitude}</td>
             </tr>
         </#list>
     </table>

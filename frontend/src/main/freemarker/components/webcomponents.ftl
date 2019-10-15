@@ -1,9 +1,9 @@
-<#macro import path="" url="" addQuery=false>
-    <#if url?has_content>
-        <script src="${url}"></script>
-    <#else>
+<#macro import url addQuery=false>
+    <#if addQuery>
         <script type="text/javascript">
-          addScript("${path}", ${addQuery?then('true', 'false')});
+          addScriptWithQuery("${url}");
         </script>
+    <#else>
+        <script src="${url}"></script>
     </#if>
 </#macro>
