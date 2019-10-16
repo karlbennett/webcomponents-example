@@ -1,0 +1,78 @@
+.address-table {
+  font-size: 0.8em;
+  border-collapse: collapse;
+  text-align: center;
+  margin: 0 auto;
+
+  &__nav {
+    overflow: hidden
+  }
+
+  &__page {
+    display: inline-block;
+    font-size: 0.8em;
+    padding: 8px;
+    float: left;
+    white-space: pre;
+  }
+
+  &__position {
+    display: inline-block;
+    font-size: 0.8em;
+    padding: 8px;
+    float: right;
+    white-space: pre;
+  }
+
+  &__previous {
+    display: inline-block;
+    float: right;
+    margin-top: 8px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid black;
+  }
+
+  &__next {
+    display: inline-block;
+    float: right;
+    margin: 8px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid black;
+  }
+
+  &__heading {
+    border: 1px solid black;
+  }
+
+  &__cell {
+    width: 100px;
+    padding: 8px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .beds {display: none;}
+  .baths {display: none;}
+  .sqr-feet {display: none;}
+  .type {display: none;}
+  .price {display: none;}
+  .lat {display: none;}
+  .long {display: none;}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .baths {display: none;}
+  .type {display: none;}
+  .lat {display: none;}
+  .long {display: none;}
+}
+
+@media only screen and (min-width: 992px) {
+
+}
